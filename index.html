@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SORATABI – Travel Magazine</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-/* --- スタイルは元のものをベースに、最適化を維持しています --- */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:#f7f2ec;color:#111;overflow-x:hidden}
-img{display:block;width:100%;height:100%;object-fit:cover}
-button,a{cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none}
-:root{--ink:#111810;--white:#fff;--coral:#d95f3b;--teal:#0a5c4e;--sand:#f7f2ec;--mist:#e8e0d5;--gray:#6b6560}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SORATABI – Travel Magazine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;background:#f7f2ec;color:#111;overflow-x:hidden}
+        img{display:block;width:100%;height:100%;object-fit:cover}
+        button,a{cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none}
+        :root{--ink:#111810;--white:#fff;--coral:#d95f3b;--teal:#0a5c4e;--sand:#f7f2ec;--mist:#e8e0d5;--gray:#6b6560}
 
-#nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,6vw,80px);transition:0.35s}
-#nav.solid{background:rgba(252,249,244,.96);border-bottom:1px solid rgba(0,0,0,.08);backdrop-filter:blur(14px)}
-.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:3px;color:var(--white);transition:0.35s}
-#nav.solid .logo-text{color:var(--ink)}
-.logo-text span{color:var(--coral)}
-.nav-links{display:flex;gap:10px;align-items:center}
-.nav-link{background:none;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.8);padding:4px 14px;transition:0.2s}
-#nav.solid .nav-link{color:var(--gray)}
-.nav-cta{padding:8px 22px;background:var(--coral);border:none;border-radius:40px;color:var(--white);font-size:11px;letter-spacing:1.5px}
+        #nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,6vw,80px);transition:0.35s}
+        #nav.solid{background:rgba(252,249,244,.96);border-bottom:1px solid rgba(0,0,0,.08);backdrop-filter:blur(14px)}
+        .logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:3px;color:var(--white);transition:0.35s}
+        #nav.solid .logo-text{color:var(--ink)}
+        .logo-text span{color:var(--coral)}
+        .nav-links{display:flex;gap:10px;align-items:center}
+        .nav-link{background:none;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.8);padding:4px 14px;transition:0.2s}
+        #nav.solid .nav-link{color:var(--gray)}
+        .nav-cta{padding:8px 22px;background:var(--coral);border:none;border-radius:40px;color:var(--white);font-size:11px;letter-spacing:1.5px}
 
-.page{display:none}
-.page.active{display:block}
+        .page{display:none}
+        .page.active{display:block}
 
-#hero{position:relative;height:100vh;overflow:hidden;background:#000}
-#hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.8s ease}
-#hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.6))}
-#hero-content{position:absolute;bottom:15%;left:clamp(20px,8vw,96px);max-width:700px;z-index:10;color:#fff}
-#hero-tag{display:inline-block;background:var(--coral);padding:4px 12px;font-size:10px;letter-spacing:2px;margin-bottom:15px}
-#hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7vw,80px);line-height:1.1;margin-bottom:20px}
-#hero-dots{position:absolute;bottom:40px;right:5vw;display:flex;gap:10px}
-.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);border:none;cursor:pointer}
-.dot.active{background:var(--coral);width:30px;border-radius:10px}
+        #hero{position:relative;height:100vh;overflow:hidden;background:#000}
+        #hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.8s ease}
+        #hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.6))}
+        #hero-content{position:absolute;bottom:15%;left:clamp(20px,8vw,96px);max-width:700px;z-index:10;color:#fff}
+        #hero-tag{display:inline-block;background:var(--coral);padding:4px 12px;font-size:10px;letter-spacing:2px;margin-bottom:15px}
+        #hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7vw,80px);line-height:1.1;margin-bottom:20px}
+        #hero-dots{position:absolute;bottom:40px;right:5vw;display:flex;gap:10px}
+        .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);border:none;cursor:pointer}
+        .dot.active{background:var(--coral);width:30px;border-radius:10px}
 
-.section{padding:80px clamp(16px,6vw,80px)}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);margin-bottom:40px}
-.cards-hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
-.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.05);transition:0.3s}
-.card:hover{transform:translateY(-5px)}
-.card-img{height:250px;position:relative}
-.card-img-tall{height:550px}
-.card-body{padding:20px}
+        .section{padding:80px clamp(16px,6vw,80px)}
+        .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);margin-bottom:40px}
+        .cards-hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+        .card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.05);transition:0.3s}
+        .card:hover{transform:translateY(-5px)}
+        .card-img{height:250px;position:relative}
+        .card-img-tall{height:550px}
+        .card-body{padding:20px}
 
-/* その他、MosaicやNewsletter、Footerのスタイルは継承 */
-.mosaic{display:grid;grid-template-columns:repeat(4,1fr);height:600px}
-.mosaic-cell{position:relative;overflow:hidden}
-.nl{background:var(--teal);color:#fff;padding:100px 20px;text-align:center}
-footer{background:var(--ink);color:#fff;padding:40px clamp(16px,6vw,80px);display:flex;justify-content:space-between}
+        .mosaic{display:grid;grid-template-columns:repeat(4,1fr);height:600px}
+        .mosaic-cell{position:relative;overflow:hidden}
+        .nl{background:var(--teal);color:#fff;padding:100px 20px;text-align:center}
+        footer{background:var(--ink);color:#fff;padding:40px clamp(16px,6vw,80px);display:flex;justify-content:space-between}
 
-@media(max-width:768px){
-    .cards-hero-grid{grid-template-columns:1fr}
-    .mosaic{grid-template-columns:repeat(2,1fr);height:auto}
-    .mosaic-cell{height:250px}
-}
-</style>
+        @media(max-width:768px){
+            .cards-hero-grid{grid-template-columns:1fr}
+            .mosaic{grid-template-columns:repeat(2,1fr);height:auto}
+            .mosaic-cell{height:250px}
+        }
+    </style>
 </head>
 <body>
 
@@ -123,7 +121,6 @@ footer{background:var(--ink);color:#fff;padding:40px clamp(16px,6vw,80px);displa
 </div>
 
 <script>
-/* --- DATA --- */
 const ARTICLES = [
     { id:0, cat:"リゾート", photo:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800", title:"モルディブ、水上ヴィラで過ごす夢", dest:"🇲🇻 モルディブ", date:"2026.02.18", lead:"エメラルドグリーンの海に浮かぶ水上コテージ。" },
     { id:1, cat:"文化", photo:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800", title:"バリ島、神々の島で見つけた自分", dest:"🇮🇩 バリ島", date:"2026.02.12", lead:"芸術と信仰が溶け合う神々の島。" },
@@ -132,4 +129,72 @@ const ARTICLES = [
 
 const HEROES = [
     { src:"https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1600", tag:"特集", title:"旅は、自分を変える。", sub:"SORATABIが厳選した絶景と出会いの旅へ。" },
-    { src:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600", tag:"新着", title:"その先に、未知の
+    { src:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600", tag:"新着", title:"その先に、未知の美しさがある。", sub:"本物の旅ガイドを、厳選してお届けします。" }
+];
+
+const MOSAICS = [
+    { src:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600", label:"Maldives" },
+    { src:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600", label:"Bali" },
+    { src:"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600", label:"Greece" },
+    { src:"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600", label:"Kyoto" }
+];
+
+let heroIdx = 0;
+
+function cardHTML(a, tall = false) {
+    return `
+    <div class="card">
+        <div class="card-img ${tall ? 'card-img-tall' : ''}"><img src="${a.photo}" alt=""></div>
+        <div class="card-body">
+            <small style="color:var(--coral)">${a.cat}</small>
+            <h3 style="margin:10px 0">${a.title}</h3>
+            <p style="font-size:13px; color:#666">${a.lead}</p>
+        </div>
+    </div>`;
+}
+
+function buildHome() {
+    document.getElementById('featured-cards').innerHTML = cardHTML(ARTICLES[0], true) + ARTICLES.slice(1).map(a => cardHTML(a)).join('');
+    document.getElementById('mosaic').innerHTML = MOSAICS.map(m => `
+        <div class="mosaic-cell">
+            <img src="${m.src}" alt="">
+            <div style="position:absolute; inset:0; background:rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center; color:#fff; font-size:20px; font-weight:700">${m.label}</div>
+        </div>
+    `).join('');
+    document.getElementById('hero-dots').innerHTML = HEROES.map((_,i) => `<button class="dot ${i===0?'active':''}" onclick="goHero(${i})"></button>`).join('');
+    goHero(0);
+}
+
+function goHero(i) {
+    heroIdx = i;
+    const h = HEROES[i];
+    document.getElementById('hero-photo').src = h.src;
+    document.getElementById('hero-title').textContent = h.title;
+    document.getElementById('hero-sub').textContent = h.sub;
+    document.getElementById('hero-tag').textContent = h.tag;
+    document.querySelectorAll('.dot').forEach((d,idx) => d.classList.toggle('active', idx === i));
+}
+
+function showPage(p) {
+    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+    document.getElementById('page-' + p).classList.add('active');
+    if(p === 'list') {
+        document.getElementById('list-cards').innerHTML = ARTICLES.map(a => cardHTML(a)).join('');
+    }
+    window.scrollTo(0,0);
+}
+
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if(window.scrollY > 100) nav.classList.add('solid');
+    else nav.classList.remove('solid');
+});
+
+buildHome();
+setInterval(() => {
+    heroIdx = (heroIdx + 1) % HEROES.length;
+    goHero(heroIdx);
+}, 5000);
+</script>
+</body>
+</html>
